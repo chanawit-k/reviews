@@ -22,7 +22,7 @@ const Card = ({ comment, prevReview, nextReview, randomReview }) => {
           <FaChevronRight className="beer" />
         </button>
       </div>
-      <button type="button" className="btn" onClick={randomReview}>
+      <button type="button" className="btn btn-hipster" onClick={randomReview}>
         Surprise me
       </button>
     </article>
