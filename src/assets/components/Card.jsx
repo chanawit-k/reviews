@@ -1,11 +1,16 @@
 import React from 'react'
-import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'
+import { FaChevronLeft, FaChevronRight, FaQuoteRight } from 'react-icons/fa'
 
 const Card = ({ comment, prevReview, nextReview, randomReview }) => {
   const { image, job, name, text } = comment
   return (
-    <section className="review">
-      <img src={image} className="img-container" alt="" />
+    <article className="review">
+      <div className="img-container">
+        <img src={image} alt={name} className="person-img" />
+        <span className="quote-icon">
+          <FaQuoteRight />
+        </span>
+      </div>
       <h4 className="author">{name}</h4>
       <p className="job">{job}</p>
       <p className="info">{text}</p>
@@ -20,7 +25,7 @@ const Card = ({ comment, prevReview, nextReview, randomReview }) => {
       <button type="button" className="btn" onClick={randomReview}>
         Surprise me
       </button>
-    </section>
+    </article>
   )
 }
 
