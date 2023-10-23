@@ -5,26 +5,30 @@ const App = () => {
   const [comments, setComments] = useState(reviews[0])
   const [index, setIndex] = useState(0)
 
-  const nextReview = () => {
-    let nextElement = index + 1
-    if (reviews[nextElement]) {
-      setComments(reviews[nextElement])
+  const checkNumber = (number) => {
+    if (number > reviews.length - 1) {
+      return 0
+    } else if (number < 0) {
+      return reviews.length - 1
     } else {
-      nextElement = 0
-      setComments(reviews[nextElement])
+      return number
     }
-    setIndex(nextElement)
+  }
+
+  const nextReview = () => {
+    setIndex((currentIndex) => {
+      let nexIndex = checkNumber(currentIndex + 1)
+      setComments(reviews[nexIndex])
+      return nexIndex
+    })
   }
 
   const prevReview = () => {
-    let prevElement = index - 1
-    if (prevElement < 0) {
-      prevElement = reviews.length - 1
-      setComments(reviews[prevElement])
-    } else {
-      setComments(reviews[prevElement])
-    }
-    setIndex(prevElement)
+    setIndex((currentIndex) => {
+      let prevIndex = checkNumber(currentIndex - 1)
+      setComments(reviews[prevIndex])
+      return prevIndex
+    })
   }
 
   const randomReview = () => {
